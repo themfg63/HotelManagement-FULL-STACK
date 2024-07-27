@@ -29,10 +29,12 @@ public class User implements UserDetails {
     @NotBlank(message = "Telefon No boş bırakılamaz")
     private String phoneNumber;
 
+    @NotBlank(message = "Şifre boş bırakılamaz")
     private String password;
 
     private String role;
 
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
 
