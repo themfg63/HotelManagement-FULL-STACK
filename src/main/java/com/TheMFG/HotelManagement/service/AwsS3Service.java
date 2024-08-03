@@ -1,6 +1,13 @@
 package com.TheMFG.HotelManagement.service;
 
+import com.TheMFG.HotelManagement.dto.BookingDTO;
+import com.TheMFG.HotelManagement.dto.RoomDTO;
+import com.TheMFG.HotelManagement.dto.UserDTO;
 import com.TheMFG.HotelManagement.exception.OurException;
+import com.TheMFG.HotelManagement.model.Booking;
+import com.TheMFG.HotelManagement.model.Room;
+import com.TheMFG.HotelManagement.model.User;
+
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
@@ -13,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AwsS3Service {
@@ -24,6 +33,7 @@ public class AwsS3Service {
     @Value("${aws.s3.secret.key}")
     private String awsS3SecretKey;
 
+    /* kullanıcı tarafından yüklenen bir fotoğrafı Amazon S3'e yükler ve bu resim S3 üzerindeki URL'sini döndürür. */
     public String saveImageToS3(MultipartFile photo){
         String s3LocationImage = null;
 

@@ -29,7 +29,7 @@ public class Booking {
     @Min(value = 0, message = "Çocuk Misafir Sayısı En Az 0 Olmalı!")
     private int numOfChildren; // çocuk misafir sayisi
 
-    private int totalNumOfGues; // toplam misafir sayisi
+    private int totalNumOfGuest; // toplam misafir sayisi
 
     private String bookingConfirmationCode; //rezervasyon onay kodu
 
@@ -46,7 +46,7 @@ public class Booking {
     private Room room;
 
     public void calculateTotalNumberOfGuest(){
-        this.totalNumOfGues = this.numOfAdults + this.numOfChildren;
+        this.totalNumOfGuest = this.numOfAdults + this.numOfChildren;
     }
 
     public void setNumOfAdults(int numOfAdults){
@@ -67,7 +67,7 @@ public class Booking {
                 ", checkOutDate=" + checkOutDate +
                 ", numOfAdults=" + numOfAdults +
                 ", numOfChildren=" + numOfChildren +
-                ", totalNumOfGues=" + totalNumOfGues +
+                ", totalNumOfGuest=" + totalNumOfGuest +
                 ", bookingConfirmationCode='" + bookingConfirmationCode + '\'' +
                 ", user=" + user +
                 ", room=" + room +
