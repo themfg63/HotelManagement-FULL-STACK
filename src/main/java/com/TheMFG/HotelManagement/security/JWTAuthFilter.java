@@ -1,5 +1,6 @@
 package com.TheMFG.HotelManagement.security;
 
+import com.TheMFG.HotelManagement.service.CustomUserDetailsService;
 import com.TheMFG.HotelManagement.utils.JWTUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -22,7 +23,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     @Autowired
     private JWTUtils jwtUtils;
     @Autowired
-    private CachingUserDetailsService cachingUserDetailsService;
+    private CustomUserDetailsService customUserDetailsService;
 
     /*
     Bu method, bir HTTP isteğinin JWT token içerip içermediğini kontrol eder. Eğer geçerli bir JWT token bulunursa,
@@ -44,7 +45,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         userEmail = jwtUtils.extractUsername(jwtToken);
 
         if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = cachingUserDetailsService.loadUserByUsername(userEmail);
+            UserDetails userDetails = customUserDetailsService.loadUserByUsername(userEmail);
             if(jwtUtils.isValidToken(jwtToken,userDetails)){
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
