@@ -1,0 +1,17 @@
+/auth/register -> Kullanıcı Oluşturma (email,password,phoneNumber,name,role(role girilmezse user olarak atar))
+/auth/login -> Giriş yapma (email,password)
+
+/users/all -> Tüm kullanıcıları getirir. Admin Rolü gereklidir. Token Kullanılır.
+/users/get-by-id/{id} -> ID'si girilen kullanıcıyı getirir. Token Kullanılır.
+/users/get-logged-in-profile-info -> Giriş yapan kullanıcının bilgilerini getirir. Token Kullanılır.
+/users/get-user-bookings/{id} -> ID'si girilen kullanıcının rezervasyonları getirilir. Token Kullanılır.
+/users/delete/{id} -> ID'si girilen kullanıcıyı siler. Admin Rolü Gereklidir. Token Kullanılır.
+
+/rooms/add -> Oda ekler. Admin Rolü Gereklidir. Token Kullanılır. Bilgiler form-data formatında kullanılır.
+/rooms/types -> Oda Tiplerini Getirir.
+/rooms/all -> Tüm odaları getirir.
+/rooms/room-by-id/{id} -> ID'si belirtilen odayı getirir.
+/rooms/delete/{id} -> ID'si belirtilen odayı siler. Admın Rolü Gereklidir. Token Kullanılır.
+/rooms/update/{id} -> ID'si belirtilen odayı günceller. Admin Rolü Gereklidir. Token Kullanılır.
+/rooms/all-available-rooms -> boş olan(müsait olan) odaları getirir.
+

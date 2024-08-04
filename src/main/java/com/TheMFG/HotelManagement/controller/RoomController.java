@@ -33,7 +33,7 @@ public class RoomController {
         if(photo == null || photo.isEmpty() || roomType == null || roomType.isBlank() || roomPrice == null || roomType.isBlank()){
             Response response = new Response();
             response.setStatusCode(400);
-            response.setMessage("Lütfen Tüm Bilgileri Doldurun(photo,roomType,roomPrice)");
+            response.setMessage("Lütfen Tüm Bilgileri Doldurun(Oda Fotoğrafı, Oda Tipi, Oda Fiyatı)");
             return ResponseEntity.status(response.getStatusCode()).body(response);
         }
 

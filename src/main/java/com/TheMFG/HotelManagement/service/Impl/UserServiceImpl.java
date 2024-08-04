@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
             response.setToken(token);
             response.setRole(user.getRole());
             response.setExpirationTime("7 Gün");
-            response.setMessage("Başarılı");
+            response.setMessage("Giriş Başarılı");
         }catch (OurException e){
             response.setStatusCode(404);
             response.setMessage(e.getMessage());
@@ -127,7 +127,7 @@ public class UserServiceImpl implements UserService {
             userRepository.findById(Long.valueOf(userId)).orElseThrow(() -> new OurException("Kullanıcı Bulunamadı"));
             userRepository.deleteById(Long.valueOf(userId));
             response.setStatusCode(200);
-            response.setMessage("Başarılı");
+            response.setMessage("Kullanıcı Silindi!");
         }catch (OurException e){
             response.setStatusCode(404);
             response.setMessage(e.getMessage());
